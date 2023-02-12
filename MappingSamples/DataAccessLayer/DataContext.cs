@@ -6,11 +6,9 @@ namespace MappingSamples.DataAccessLayer;
 
 public class DataContext : DbContext
 {
-    public DbSet<Person> People { get; set; }
+    public DbSet<Student> Students { get; set; }
 
-    public DbSet<Student> Student { get; set; }
-
-    public DbSet<Worker> Worker { get; set; }
+    public DbSet<Worker> Workers { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
@@ -22,7 +20,6 @@ public class DataContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<Person>();
         modelBuilder.Entity<Student>();
         modelBuilder.Entity<Worker>();
 
