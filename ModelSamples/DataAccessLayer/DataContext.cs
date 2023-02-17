@@ -12,7 +12,7 @@ public class DataContext : DbContext
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         optionsBuilder.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=MinimalDB;Integrated Security=True;")
-            .LogTo(Console.WriteLine, new[] { RelationalEventId.CommandExecuted }).EnableSensitiveDataLogging();
+            .LogTo(Console.WriteLine, new[] { RelationalEventId.CommandExecuted, RelationalEventId.TransactionStarted, RelationalEventId.TransactionCommitted, RelationalEventId.TransactionRolledBack }).EnableSensitiveDataLogging();
 
         base.OnConfiguring(optionsBuilder);
     }

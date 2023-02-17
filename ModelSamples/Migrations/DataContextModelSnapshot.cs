@@ -17,7 +17,7 @@ namespace ModelSamples.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "7.0.2")
+                .HasAnnotation("ProductVersion", "7.0.3")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -28,6 +28,11 @@ namespace ModelSamples.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier")
                         .HasDefaultValueSql("newid()");
+
+                    b.Property<string>("City")
+                        .HasMaxLength(50)
+                        .IsUnicode(false)
+                        .HasColumnType("varchar(50)");
 
                     b.Property<string>("FirstName")
                         .IsRequired()
@@ -44,35 +49,6 @@ namespace ModelSamples.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("People", (string)null);
-                });
-
-            modelBuilder.Entity("ModelSamples.DataAccessLayer.Entities.Person", b =>
-                {
-                    b.OwnsOne("ModelSamples.DataAccessLayer.Entities.Address", "Address", b1 =>
-                        {
-                            b1.Property<Guid>("PersonId")
-                                .ValueGeneratedOnAdd()
-                                .HasColumnType("uniqueidentifier");
-
-                            b1.Property<string>("City")
-                                .IsUnicode(false)
-                                .HasColumnType("varchar(max)");
-
-                            b1.Property<string>("ZipCode")
-                                .IsUnicode(false)
-                                .HasColumnType("varchar(max)");
-
-                            b1.HasKey("PersonId");
-
-                            b1.ToTable("People");
-
-                            b1.ToJson("Address");
-
-                            b1.WithOwner()
-                                .HasForeignKey("PersonId");
-                        });
-
-                    b.Navigation("Address");
                 });
 #pragma warning restore 612, 618
         }

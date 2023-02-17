@@ -9,10 +9,10 @@ using ModelSamples.DataAccessLayer;
 
 #nullable disable
 
-namespace EntityFrameworkSample.Migrations
+namespace ModelSamples.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20221124103342_Initial")]
+    [Migration("20230217155419_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -20,7 +20,7 @@ namespace EntityFrameworkSample.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "7.0.2")
+                .HasAnnotation("ProductVersion", "7.0.3")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
