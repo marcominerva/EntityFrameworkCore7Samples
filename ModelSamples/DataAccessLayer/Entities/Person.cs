@@ -8,5 +8,5 @@ public class Person
 
     public string LastName { get; set; }
 
-    public string City { get; set; }
+    public Address Address { get; set; }
 }
